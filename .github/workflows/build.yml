@@ -2,7 +2,7 @@ name: Build
 on: [push]
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -10,8 +10,7 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run build
-      - run: npm run build:exe
       - uses: actions/upload-artifact@v4
         with:
-          name: MINE-BOLT-EXE
-          path: release
+          name: MINE-BOLT-WEB
+          path: dist
