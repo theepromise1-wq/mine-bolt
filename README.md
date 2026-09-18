@@ -1,2 +1,16 @@
-# mine-bolt
-MINE BOLT — a free, offline-first Bolt.new-style app builder with templates, Monaco editor, live preview, PWA, Electron, and Capacitor support.
+name: Build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MINE-BOLT-WEB
+          path: dist
